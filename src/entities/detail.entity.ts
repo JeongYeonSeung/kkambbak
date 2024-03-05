@@ -2,7 +2,7 @@ import { Column, Entity, OneToOne } from 'typeorm';
 import { CommonBigPKEntity } from './common.entity';
 import { ScheduleEntity } from './schedule.entity';
 
-@Entity('detail')
+@Entity('Detail')
 export class DetailEntity extends CommonBigPKEntity {
   @Column('date', { unique: false, nullable: false })
   date: Date;
