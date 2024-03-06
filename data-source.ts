@@ -2,7 +2,7 @@ import * as path from 'path';
 import { DataSource } from 'typeorm';
 import * as dotenv from 'dotenv';
 
-dotenv.config(); // dotenv를 이용하여 환경변수를 불러오겠음을 선언
+dotenv.config({ path: `.env.dev` }); // dotenv를 이용하여 환경변수를 불러오겠음을 선언
 
 export const dataSource = new DataSource({
   type: 'mysql',
