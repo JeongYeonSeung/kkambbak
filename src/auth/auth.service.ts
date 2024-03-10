@@ -12,6 +12,7 @@ export class AuthService {
     private readonly userRepository: Repository<UserEntity>,
     private readonly jwtService: JwtService,
   ) {}
+
   async validateUser(username: string, password: string) {
     const user = await this.userRepository.findOne({
       where: { username: username },
