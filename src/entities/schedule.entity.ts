@@ -1,4 +1,11 @@
-import { Column, Entity, ManyToOne, OneToMany, OneToOne } from 'typeorm';
+import {
+  Column,
+  Entity,
+  JoinColumn,
+  ManyToOne,
+  OneToMany,
+  OneToOne,
+} from 'typeorm';
 import { CommonBigPKEntity } from './common.entity';
 import { UserEntity } from './user.entity';
 import { ChecklistEntity } from './checklist.entity';
@@ -13,11 +20,13 @@ export class ScheduleEntity extends CommonBigPKEntity {
   description: string;
 
   @ManyToOne(() => UserEntity, (user) => user.schedules)
+  @JoinColumn({ name: 'userId', referencedColumnName: 'id' })
   user: UserEntity;
 
   @OneToMany(() => ChecklistEntity, (checklist) => checklist.schedule)
   checklists: ChecklistEntity[];
 
-  @OneToOne(() => DetailEntity, (detail) => detail.schedule)
+  @OneToOne(() => DetailEntity)
+  @JoinColumn({ name: 'detailId' })
   detail: DetailEntity;
 }

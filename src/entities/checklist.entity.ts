@@ -1,4 +1,4 @@
-import { Column, Entity, ManyToOne } from 'typeorm';
+import { Column, Entity, JoinColumn, ManyToOne } from 'typeorm';
 import { ScheduleEntity } from './schedule.entity';
 import { CommonBigPKEntity } from './common.entity';
 
@@ -11,5 +11,6 @@ export class ChecklistEntity extends CommonBigPKEntity {
   isChecked: boolean;
 
   @ManyToOne(() => ScheduleEntity, (schedule) => schedule.checklists)
+  @JoinColumn({ name: 'scheduleId', referencedColumnName: 'id' })
   schedule: ScheduleEntity;
 }

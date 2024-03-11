@@ -1,6 +1,5 @@
-import { Column, Entity, OneToOne } from 'typeorm';
+import { Column, Entity } from 'typeorm';
 import { CommonBigPKEntity } from './common.entity';
-import { ScheduleEntity } from './schedule.entity';
 
 @Entity('Detail')
 export class DetailEntity extends CommonBigPKEntity {
@@ -11,20 +10,17 @@ export class DetailEntity extends CommonBigPKEntity {
   time: string;
 
   @Column('datetime', { unique: false, nullable: true })
-  repeat_end: Date;
+  repeatEnd: Date;
 
   @Column('varchar', { unique: false, nullable: true })
-  repeat_type: string;
+  repeatType: string;
 
   @Column('integer', { unique: false, nullable: true })
-  repeat_frequency: number;
+  repeatFrequency: number;
 
   @Column('varchar', { unique: false, nullable: true })
-  repeat_day_of_week: string;
+  repeatDayOfWeek: string;
 
   @Column('integer', { unique: false, nullable: true })
-  repeat_day_of_month: number;
-
-  @OneToOne(() => ScheduleEntity, (schedule) => schedule.detail)
-  schedule: ScheduleEntity;
+  repeatDayOfMonth: number;
 }
