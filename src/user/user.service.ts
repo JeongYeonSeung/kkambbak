@@ -11,7 +11,7 @@ export class UserService {
     private readonly userRepository: Repository<UserEntity>,
   ) {}
 
-  async register(username: string, display_name: string, password: string) {
+  async register(username: string, displayName: string, password: string) {
     const exitedUser = await this.userRepository.findOne({
       where: {
         username: username,
@@ -25,7 +25,7 @@ export class UserService {
     const hashedPassword = await hash(password, 10);
     const user = await this.userRepository.save({
       username: username,
-      display_name: display_name,
+      displayName: displayName,
       password: hashedPassword,
     });
 

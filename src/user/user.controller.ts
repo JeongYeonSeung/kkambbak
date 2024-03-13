@@ -14,10 +14,10 @@ export class UserController {
   @Post('register')
   async register(@Body() body) {
     const username = body?.username;
-    const display_name = body?.display_name;
+    const displayName = body?.displayName;
     const password = body?.password;
 
-    return this.userService.register(username, display_name, password);
+    return this.userService.register(username, displayName, password);
   }
 
   @UseGuards(JwtAuthGuard)

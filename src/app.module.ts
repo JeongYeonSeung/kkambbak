@@ -6,8 +6,6 @@ import { AppService } from './app.service';
 import { UserModule } from './user/user.module';
 import { AuthModule } from './auth/auth.module';
 import { ConfigModule, ConfigService } from '@nestjs/config';
-import { ScheduleController } from './schedule/schedule.controller';
-import { ScheduleService } from './schedule/schedule.service';
 import { ScheduleModule } from './schedule/schedule.module';
 
 console.log(`.env.${process.env.NODE_ENV}`);
@@ -38,7 +36,7 @@ console.log(`.env.${process.env.NODE_ENV}`);
     AuthModule,
     ScheduleModule,
   ],
-  controllers: [AppController, ScheduleController],
-  providers: [AppService, ScheduleService],
+  controllers: [AppController],
+  providers: [AppService],
 })
 export class AppModule {}
