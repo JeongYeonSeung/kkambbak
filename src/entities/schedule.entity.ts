@@ -13,20 +13,20 @@ import { DetailEntity } from './detail.entity';
 
 @Entity('Schedule')
 export class ScheduleEntity extends CommonBigPKEntity {
-  @Column('varchar', { unique: false, nullable: false })
+  @Column('varchar', { name: 'title', unique: false, nullable: false })
   title: string;
 
-  @Column('text', { unique: false, nullable: true })
+  @Column('text', { name: 'description', unique: false, nullable: true })
   description: string;
 
   @ManyToOne(() => UserEntity, (user) => user.schedules)
-  @JoinColumn({ name: 'userId', referencedColumnName: 'id' })
+  @JoinColumn({ name: 'user_id', referencedColumnName: 'id' })
   user: UserEntity;
 
   @OneToMany(() => ChecklistEntity, (checklist) => checklist.schedule)
   checklists: ChecklistEntity[];
 
   @OneToOne(() => DetailEntity)
-  @JoinColumn({ name: 'detailId' })
+  @JoinColumn({ name: 'detail_id' })
   detail: DetailEntity;
 }

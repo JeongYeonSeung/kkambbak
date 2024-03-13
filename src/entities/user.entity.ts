@@ -4,13 +4,13 @@ import { ScheduleEntity } from './schedule.entity';
 
 @Entity('User')
 export class UserEntity extends CommonBigPKEntity {
-  @Column('varchar', { unique: true, nullable: false })
+  @Column('varchar', { name: 'username', unique: true, nullable: false })
   username: string;
 
-  @Column('varchar', { unique: false, nullable: false })
-  display_name: string;
+  @Column('varchar', { name: 'display_name', unique: false, nullable: false })
+  displayName: string;
 
-  @Column('varchar', { unique: false, nullable: false })
+  @Column('varchar', { name: 'password', unique: false, nullable: false })
   password: string;
 
   @OneToMany(() => ScheduleEntity, (schedule) => schedule.user)

@@ -12,14 +12,14 @@ export class CommonBigPKEntity {
   id: string;
 
   // 생성일자를 적용해주는 컬럼
-  @CreateDateColumn({ type: 'timestamp' })
+  @CreateDateColumn({ name: 'created_at', type: 'timestamp' })
   createdAt: Date;
 
   // update 쿼리 날릴 때, 자동으로 수정일자를 넣어줌
-  @UpdateDateColumn({ type: 'timestamp', nullable: true })
+  @UpdateDateColumn({ name: 'updated_at', type: 'timestamp', nullable: true })
   updatedAt: Date | null;
 
   // soft delete를 위한 컬럼
-  @DeleteDateColumn({ type: 'timestamp', nullable: true })
+  @DeleteDateColumn({ name: 'deleted_at', type: 'timestamp', nullable: true })
   deletedAt: Date | null;
 }
